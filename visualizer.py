@@ -1,4 +1,5 @@
 from dijkstra import dijkstra
+from astar import astar
 from node import Node
 from bfs import bfs
 from dfs import dfs
@@ -12,6 +13,8 @@ def choose_algo(start, end, grid, algorithm):
         return dfs(start, end, grid)
     elif algorithm == 'dijkstra':
         return dijkstra(start, end, grid)
+    elif algorithm == 'astar':
+        return astar(start, end, grid)
 
 
 if __name__ == "__main__":
@@ -37,16 +40,16 @@ if __name__ == "__main__":
             [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 1, 1],
             [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0]]
 
-    print('!=============== PATHFINDING =================!')
+    print('!=============== PATHFINDER =================!')
     print('\n-----------------------------------------------\n                Custom Grid')
     for row in maze:
         print(''.join('{0} '.format(num) for num in row))
 
     startInp = input(colored(
-        '\nPlease enter a starting coordinate (e.g. 2,1): ', 'cyan'))
+        '\nPlease enter a starting coordinate (ex: 2,1): ', 'cyan'))
     start = tuple(map(int, startInp.split(',')))
     endInput = input(colored(
-        'Please enter an ending coordinate (e.g. 9,1): ', 'cyan'))
+        'Please enter an ending coordinate (ex: 9,1): ', 'cyan'))
     end = tuple(map(int, endInput.split(',')))
     algorithm = input(colored(
         'Please enter an algorithm (dfs, bfs, astar, dijkstra): ', 'yellow'))
