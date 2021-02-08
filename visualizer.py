@@ -1,11 +1,17 @@
+from dijkstra import dijkstra
 from node import Node
 from bfs import bfs
+from dfs import dfs
 from termcolor import colored
 
 
 def choose_algo(start, end, grid, algorithm):
     if algorithm == 'bfs':
         return bfs(start, end, grid)
+    elif algorithm == 'dfs':
+        return dfs(start, end, grid)
+    elif algorithm == 'dijkstra':
+        return dijkstra(start, end, grid)
 
 
 if __name__ == "__main__":
@@ -44,6 +50,9 @@ if __name__ == "__main__":
     end = tuple(map(int, endInput.split(',')))
     algorithm = input(colored(
         'Please enter an algorithm (dfs, bfs, astar, dijkstra): ', 'yellow'))
+
+    if algorithm not in ['bfs', 'dfs', 'dijkstra', 'astar']:
+        raise Exception('Invalid algorithm input. Please input again!')
 
     choose_algo(start, end, maze, algorithm)
     maze[start[0]][start[1]] = 'S'
